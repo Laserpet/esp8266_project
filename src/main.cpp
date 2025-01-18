@@ -2,14 +2,14 @@
 #include <PubSubClient.h>
 
 // WiFi settings
-const char *ssid = "smart_home";             // Replace with your WiFi name
+const char *ssid = "Smart_Home";             // Replace with your WiFi name
 const char *password = "cyz19950124";        // Replace with your WiFi password
 
 // MQTT Broker settings
-const char *mqtt_broker = "broker.emqx.io";  // EMQX broker endpoint
-const char *mqtt_topic = "emqx/esp8266";     // MQTT topic
-const char *mqtt_username = "emqx";          // MQTT username for authentication
-const char *mqtt_password = "public";        // MQTT password for authentication
+const char *mqtt_broker = "homeassistant.chenyz.com.cn";  // EMQX broker endpoint
+const char *mqtt_topic = "smart_home/esp8266";     // MQTT topic
+const char *mqtt_username = "chenyz";          // MQTT username for authentication
+const char *mqtt_password = "cyz19950124";        // MQTT password for authentication
 const int mqtt_port = 1883;                  // MQTT port (TCP)
 
 WiFiClient espClient;
@@ -45,7 +45,7 @@ void connectToMQTTBroker() {
             Serial.println("Connected to MQTT broker");
             mqtt_client.subscribe(mqtt_topic);
             // Publish message upon successful connection
-            mqtt_client.publish(mqtt_topic, "Hi EMQX I'm ESP8266 ^^");
+            mqtt_client.publish(mqtt_topic, "Hi Smart_Home I'm ESP8266 ^^");
         } else {
             Serial.print("Failed to connect to MQTT broker, rc=");
             Serial.print(mqtt_client.state());
